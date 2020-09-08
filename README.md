@@ -14,3 +14,14 @@ for example Jenkins postbuild task:
 `java -jar allure-piechart-telegram-1.0.jar "telegram_chat_id_here" "bot_secret_here" "${JOB_BASE_NAME}" "allure-report/" ${BUILD_URL}`
 ![jenkins config](jenkins-config.png)
 
+
+<h3>Пример запуска бота из Jenkinsfile</h3>
+
+pipeline
+{
+  post{
+    always{
+      bat "java -jar allure-piechart-telegram.jar \"-%CHAT_ID%\" \"-%TOKEN%\" ${JOB_BASE_NAME}  \"allure-report/\" ${BUILD_URL}     \"-%SONAR_URL%"
+    }
+  }
+}
