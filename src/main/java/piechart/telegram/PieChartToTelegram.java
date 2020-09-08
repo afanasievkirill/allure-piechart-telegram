@@ -20,30 +20,34 @@ public class PieChartToTelegram {
 //        String projectName = "Project name";                    // for debug
 //        String pathToAllureReportFolder = "allure-report/";     // for debug
 //        String linkToBuild = "http://google.com/";              // for debug
+//        String linkToSonarQube = "http://someIp"
 
         String chatId = args[0];                                // telegram chat id
         secretBot = args[1];                                    // telegram secret for bot
         String projectName = args[2];                           // name, displayed in piechart title
         String pathToAllureReportFolder = args[3];              // path to allure-report/
         String linkToBuild = args[4];                           // link to build
+        String linkToSonarQube = args[5];                       // link to build
 
         String linkToAllureReport = linkToBuild + "allure";    // link to allure report
+        String linkToSonarQubeReport = linkToSonarQube + "/dashboard?id=" + projectName;
         String fullPathToDataFile = pathToAllureReportFolder + pathToDataFile;
 
         List<Long> testResultsData = Utils.parsedDataForPie(fullPathToDataFile);
         long successPercent = testResultsData.get(2) * 100 /
                 (testResultsData.get(0) +
-                testResultsData.get(1) +
-                testResultsData.get(2) +
-                testResultsData.get(3) +
-                testResultsData.get(4));
+                        testResultsData.get(1) +
+                        testResultsData.get(2) +
+                        testResultsData.get(3) +
+                        testResultsData.get(4));
 
         if (successPercent == 100) { //todo - fucked jenkins sometimes sends to telegram even if 100%
             return;
         }
 
         String telegramMessage = "[" + successPercent + "] " + projectName + "\n" +
-                "Link to allure report: " + linkToAllureReport;
+                "Link to allure report: " + linkToAllureReport + "\n" +
+                "Link to sonar report: " + linkToSonarQubeReport;
 
         // generate piechart
         PieChart chart = PieChartBuilder.getChart(testResultsData, projectName);
