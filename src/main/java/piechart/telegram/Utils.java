@@ -1,6 +1,7 @@
 package piechart.telegram;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -24,10 +25,12 @@ public class Utils {
         return parsedData;
     }
 
-    public static String obvious(String file){
+    public static String obvious(String file) throws UnsupportedEncodingException {
         String[] data = readStringFromFile(file).split("\n");
         int n = (int)Math.floor(Math.random() * data.length);
-        return data[n] ;
+        byte ptext[] = data[n].getBytes();
+        String value = new String(ptext, "UTF-8");
+        return value;
     }
 
     public static Long getNumber(String dataItem) {

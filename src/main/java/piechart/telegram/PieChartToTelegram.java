@@ -6,6 +6,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 public class PieChartToTelegram {
@@ -14,7 +15,7 @@ public class PieChartToTelegram {
     public static String secretBot;
 
     // java -jar "-12345678" "Project_name" allure-report/ http://.../job/Project_name/60/
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedEncodingException {
 
 //        String chatId = "0";                                    // for debug
 //        String projectName = "Project name";                    // for debug
