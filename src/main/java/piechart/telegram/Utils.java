@@ -24,6 +24,12 @@ public class Utils {
         return parsedData;
     }
 
+    public static String obvious(String file){
+        String[] data = readStringFromFile(file).split("\n");
+        int n = (int)Math.floor(Math.random() * data.length);
+        return data[n] ;
+    }
+
     public static Long getNumber(String dataItem) {
         return parseLong(dataItem.split(" ")[1]);
     }

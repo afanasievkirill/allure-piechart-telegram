@@ -32,7 +32,7 @@ public class PieChartToTelegram {
         String linkToAllureReport = linkToBuild + "allure";    // link to allure report
         String linkToSonarQubeReport = linkToSonarQube + "/dashboard?id=" + projectName;
         String fullPathToDataFile = pathToAllureReportFolder + pathToDataFile;
-        String obvious = CapitanObviousUtils.obvious();
+        String obvious = Utils.obvious("capitanObviousDictionary.txt");
 
         List<Long> testResultsData = Utils.parsedDataForPie(fullPathToDataFile);
         long successPercent = testResultsData.get(2) * 100 /
