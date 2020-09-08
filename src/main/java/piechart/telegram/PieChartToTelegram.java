@@ -27,11 +27,12 @@ public class PieChartToTelegram {
         String projectName = args[2];                           // name, displayed in piechart title
         String pathToAllureReportFolder = args[3];              // path to allure-report/
         String linkToBuild = args[4];                           // link to build
-        String linkToSonarQube = args[5];                       // link to build
+        String linkToSonarQube = args[5];                       // link to SonarQube
 
         String linkToAllureReport = linkToBuild + "allure";    // link to allure report
         String linkToSonarQubeReport = linkToSonarQube + "/dashboard?id=" + projectName;
         String fullPathToDataFile = pathToAllureReportFolder + pathToDataFile;
+        String obvious = CapitanObviousUtils.obvious();
 
         List<Long> testResultsData = Utils.parsedDataForPie(fullPathToDataFile);
         long successPercent = testResultsData.get(2) * 100 /
@@ -47,7 +48,8 @@ public class PieChartToTelegram {
 
         String telegramMessage = "[" + successPercent + "] " + projectName + "\n" +
                 "Link to allure report: " + linkToAllureReport + "\n" +
-                "Link to sonar report: " + linkToSonarQubeReport;
+                "Link to sonar report: " + linkToSonarQubeReport +"\n" +
+                obvious + " (c)";
 
         // generate piechart
         PieChart chart = PieChartBuilder.getChart(testResultsData, projectName);
