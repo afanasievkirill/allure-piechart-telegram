@@ -15,4 +15,22 @@ public class CapitanObviousTest {
         System.out.println(expection);
         System.out.println(actual);
     }
+
+    @Test
+    public  void capitanObviousWithIntTest() throws UnsupportedEncodingException {
+        String expection = "Кого наказать!";
+        String actual = Utils.obvious("capitanObviousDictionary.txt", 0);
+        Assert.assertEquals(expection, actual);
+        System.out.println(expection);
+        System.out.println(actual);
+    }
+
+    @Test
+    public  void capitanObviousFileReadingErrorTest() throws UnsupportedEncodingException {
+        String expection = "File reading error";
+        String actual = Utils.obvious("src/test/resources/someFile.txt");
+        Assert.assertEquals(expection, actual);
+        System.out.println(expection);
+        System.out.println(actual);
+    }
 }

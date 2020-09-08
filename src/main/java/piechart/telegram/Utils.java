@@ -30,7 +30,14 @@ public class Utils {
         int n = (int)Math.floor(Math.random() * data.length);
         byte ptext[] = data[n].getBytes();
         String value = new String(ptext, "UTF-8");
-        return value;
+        return value.trim();
+    }
+
+    public static String obvious(String file, int number) throws UnsupportedEncodingException {
+        String[] data = readStringFromFile(file).split("\n");
+        byte ptext[] = data[number].getBytes();
+        String value = new String(ptext, "UTF-8");
+        return value.trim();
     }
 
     public static Long getNumber(String dataItem) {
