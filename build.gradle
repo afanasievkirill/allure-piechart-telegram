@@ -5,6 +5,11 @@ plugins {
 group 'piechart.telegram'
 version '1.0'
 
+ext {
+    allureVersion = "2.13.3"
+    junitVersion = "5.6.2"
+}
+
 sourceCompatibility = 1.8
 
 repositories {
@@ -22,6 +27,9 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.2")
     testCompile 'junit:junit:4.12'
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.4.2")
+    compile "io.qameta.allure:allure-selenide:${allureVersion}"
+    compile "io.qameta.allure:allure-rest-assured:${allureVersion}"
+    compile "io.qameta.allure:allure-java-commons:${allureVersion}"
 }
 
 tasks.test {
