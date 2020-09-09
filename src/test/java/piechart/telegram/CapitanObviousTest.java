@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.io.UnsupportedEncodingException;
 
 @Feature("Чтение ценных мыслей Капитана Очевидности из словаря")
-@Tag("Unit test")
+@Tag("UnitTest")
 public class CapitanObviousTest {
 
     @Test
