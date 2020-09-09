@@ -28,13 +28,15 @@ public class Utils {
     public static String obvious(String file) throws UnsupportedEncodingException {
         String[] data = readStringFromFile(file).split("\n");
         int n = (int)Math.floor(Math.random() * data.length);
-        byte ptext[] = data[n].getBytes();
-        String value = new String(ptext, "UTF-8");
-        return value.trim();
+        return valueDict(data, n);
     }
 
     public static String obvious(String file, int number) throws UnsupportedEncodingException {
         String[] data = readStringFromFile(file).split("\n");
+        return valueDict(data, number);
+    }
+
+    public static String valueDict(String[] data, int number) throws UnsupportedEncodingException {
         byte ptext[] = data[number].getBytes();
         String value = new String(ptext, "UTF-8");
         return value.trim();
